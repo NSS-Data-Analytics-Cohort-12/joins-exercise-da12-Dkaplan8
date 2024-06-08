@@ -57,6 +57,7 @@
 --"Walt Disney"=148735526.31578947, "Sony Pictures"-139129032.25806452, "Lionsgate"-122600000.00000000, "DreamWorks"-121352941.17647059, "Warner Bros."-103430985.91549296
 
 -- 6. How many movies in the dataset are distributed by a company which is not headquartered in California? Which of these movies has the highest imdb rating?
+
 -- SELECT count(specs.film_title)
 -- FROM specs
 -- INNER JOIN distributors
@@ -66,6 +67,7 @@
 
 -- 7. Which have a higher average rating, movies which are over two hours long or movies which are under two hours?
 -- SELECT (s.length_in_min/60) AS length_in_hours, ROUND(AVG(r.imdb_rating),2 ) AS avg_rating
+
 -- FROM specs AS s
 -- INNER JOIN rating as r
 -- USING (movie_id)
