@@ -66,11 +66,11 @@
 -- 2 films, "My Big Fat Greek Wedding", "Dirty Dancing"
 
 -- 7. Which have a higher average rating, movies which are over two hours long or movies which are under two hours?
--- SELECT (s.length_in_min/60) AS length_in_hours, ROUND(AVG(r.imdb_rating),2 ) AS avg_rating
 
--- FROM specs AS s
--- INNER JOIN rating as r
--- USING (movie_id)
--- GROUP BY length_in_hours
--- ORDER BY avg_rating DESC;
+-- SELECT (specs.length_in_min / 120) AS hours, AVG(rating.imdb_rating) AS avg_rating
+-- FROM specs
+-- INNER JOIN rating
+-- USING(movie_id)
+-- GROUP BY hours
+-- ORDER BY hours DESC
 --films over 2 hours get highest rating
