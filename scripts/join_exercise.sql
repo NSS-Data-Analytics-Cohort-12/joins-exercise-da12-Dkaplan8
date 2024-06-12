@@ -7,6 +7,7 @@
 -- GROUP BY film_title, release_year, worldwide_gross
 -- ORDER BY worldwide_gross ASC
 -- LIMIT 1;
+
 --Semi_Tough, 1977, 37,187,139
 
 -- 2. What year has the highest average imdb rating?
@@ -18,6 +19,7 @@
 -- GROUP BY specs.release_year
 -- ORDER BY avg_imdb_rating DESC
 -- LIMIT 1;
+
 --1991	7.4500000000000000
 
 -- 3. What is the highest grossing G-rated movie? Which company distributed it?
@@ -45,7 +47,7 @@
 
 -- 5. Write a query that returns the five distributors with the highest average movie budget.
 
--- SELECT distributors.company_name, AVG(revenue.film_budget) as avg_budget
+-- SELECT distributors.company_name, CAST(AVG(revenue.film_budget) as money) as avg_budget
 -- FROM specs
 -- INNER JOIN distributors
 -- ON distributors.distributor_id = specs.domestic_distributor_id
@@ -63,14 +65,19 @@
 -- INNER JOIN distributors
 -- ON distributors.distributor_id = specs.domestic_distributor_id
 -- where distributors.headquarters NOT LIKE '%CA';
--- 2 films, "My Big Fat Greek Wedding", "Dirty Dancing"
+-- 2 films
 
 -- 7. Which have a higher average rating, movies which are over two hours long or movies which are under two hours?
 
--- SELECT (specs.length_in_min / 120) AS hours, AVG(rating.imdb_rating) AS avg_rating
--- FROM specs
--- INNER JOIN rating
+-- SELECT 'movies over 2 hours' AS movie_length, AVG(rating.imdb_rating) AS avg_rating
+-- FROM rating 
+-- JOIN specs 
 -- USING(movie_id)
--- GROUP BY hours
--- ORDER BY hours DESC
+-- WHERE specs.length_in_min >= 120
+-- UNION 
+-- SELECT 'movies under 2 hours' AS movie_length, AVG(rating.imdb_rating) AS avg_rating
+-- FROM rating 
+-- JOIN specs 
+-- USING(movie_id)
+-- WHERE specs.length_in_min < 120;
 --films over 2 hours get highest rating
